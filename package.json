@@ -4,7 +4,7 @@
   "description": "Coronavirus tips",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "node './website-generator.js'"
   },
   "keywords": [
     "coronavirus",

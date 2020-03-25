@@ -9,28 +9,34 @@
     };
 
     FILESYSTEM.readdir(DIRECTORY_PATH, (err, files) => {
+        let contentByLanguage = {};
+        let languageId = '';
+
         if (err) {
             return console.log(LOG_MESSAGES.UNABLE_SCAN_DIRECTORY + err);
         }
         files.forEach(function (fileName) {
-            let langData = JSON.parse(FILESYSTEM.readFileSync(`data/${fileName}`, 'utf-8'));
-            let langId = fileName.replace('.json', '');
-            generateHTMLFile(langId, langData);
+            contentByLanguage = JSON.parse(FILESYSTEM.readFileSync(`data/${fileName}`, 'utf-8'));
+            languageId = fileName.replace('.json', '');
+
+            generateHTMLFile(languageId, contentByLanguage);
         });
     });
 
     function generateHTMLFile(lang, langData) {
         const templateFile = FILESYSTEM.readFileSync('templates/home.hbs', 'utf-8');
         const compiledTemplate = HANDLEBARS.compile(templateFile);
-        const renderedTemplate = compiledTemplate(langData);
+        const renderedTemplate = compiledTemplate({
+            lang,
+            ...langData
+        });
 
         createDistDirectoryIfItDoesNotExist();
 
-        FILESYSTEM.writeFile(`dist/${lang}.html`, renderedTemplate, (err) => {
+        FILESYSTEM.writeFile(`${DIST_DIRECTORY}/${lang}.html`, renderedTemplate, (err) => {
             if (err) throw err;
             console.log('Data written to file');
         });
-
     }
 
     function createDistDirectoryIfItDoesNotExist() {
