@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
 <head>
-    <link rel="stylesheet" href="./css/main.css"/>
-    <link rel="stylesheet" href="./css/normalize.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/normalize.css"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{description}}">
@@ -11,24 +11,39 @@
     </title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li>
-
-        </li>
-    </ul>
-</nav>
 <main class="main">
     <h1>
         {{mainMessage}}
     </h1>
 </main>
 <aside class="keywords">
-    <ul class="people_list">
+    <ul>
         {{#each keywords}}
             <li>{{this}}</li>
         {{/each}}
     </ul>
+    <ul>
+        <li>
+            <a href="http://www.coronaviruswhattodo.com/it/">Coronavirus Italia</a>
+            <a href="http://www.coronaviruswhattodo.com/es/">Coronavirus España</a>
+            <a href="http://www.coronaviruswhattodo.com/en/">Coronavirus United Kingdom</a>
+            <a href="http://www.coronaviruswhattodo.com/fr/">Coronavirus France</a>
+            <a href="http://www.coronaviruswhattodo.com/de/">Coronavirus Deutschland</a>
+        </li>
+    </ul>
 </aside>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53088357-9"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-53088357-9');
+</script>
 </body>
 </html>

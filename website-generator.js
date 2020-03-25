@@ -32,8 +32,9 @@
         });
 
         createDistDirectoryIfItDoesNotExist();
+        createLangDirectoryIfItDoesNotExist(lang)
 
-        FILESYSTEM.writeFile(`${DIST_DIRECTORY}/${lang}.html`, renderedTemplate, (err) => {
+        FILESYSTEM.writeFile(`${DIST_DIRECTORY}/${lang}/index.html`, renderedTemplate, (err) => {
             if (err) throw err;
             console.log('Data written to file');
         });
@@ -42,6 +43,12 @@
     function createDistDirectoryIfItDoesNotExist() {
         if (!FILESYSTEM.existsSync(DIST_DIRECTORY)) {
             FILESYSTEM.mkdirSync(DIST_DIRECTORY);
+        }
+    }
+
+    function createLangDirectoryIfItDoesNotExist(lang) {
+        if (!FILESYSTEM.existsSync(`${DIST_DIRECTORY}/${lang}`)) {
+            FILESYSTEM.mkdirSync(`${DIST_DIRECTORY}/${lang}`);
         }
     }
 })();
