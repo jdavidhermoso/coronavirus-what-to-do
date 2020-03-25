@@ -13,5 +13,8 @@
     "mers"
   ],
   "author": "jdavidhermoso",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "handlebars": "^4.7.3"
+  }
 }
